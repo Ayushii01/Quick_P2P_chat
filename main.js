@@ -38,6 +38,7 @@ let init=async()=>{
     client = await AgoraRTM.createInstance(APP_ID)
     await client.login({uid,token})
     console.log('hello');
+    console.log(client);
 
      channel= client.createChannel(roomId)
      await channel.join()
@@ -71,6 +72,7 @@ let handleMessageFromPeer = async(message, MemberId)=>{
 
     if(message.type=='candidate'){
         if(peerConnection){
+            console.log('peer connection')
             peerConnection.addIceCandidate(message.candidate)
         }
     }
